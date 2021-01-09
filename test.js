@@ -1,52 +1,48 @@
-'use strict'
+"use strict";
 
-const jly = require('jly')
-
+const LexerGenerator = require("./lexergenerator").LexerGenerator;
 
 const TOKEN_PATTERNS = [
-  ('NUMBER', /\d+/),
-  ('word', /[A-Za-z_]+/),
-]
+  ["NUMBER", /\d+/],
+  ["word", /[A-Za-z_]+/],
+];
 
-const IGNORED_PATTERNS = [
-  /\s+/,
-]
+const IGNORED_PATTERNS = [/\s+/];
 
-
-class LexerGenerator extends jly.LexerGenerator {
-  constructor () {
-    this.lexer =  jly.LexerGenerator
+class Generator {
+  constructor() {
+    this.lexer = new LexerGenerator();
   }
 
   add_tokens() {
-    for (name, pattern of TOKEN_PATTERNS) {
-      if pattern.match(/^[a-z]+$/) {
-        this.lexer.add(name, `\\b${pattern}\\b`)
-      } else {
-        this.lexer.add(name, `\\b${pattern}\\b`)
-      }
+    var pair, pattern;
+    for (pair of TOKEN_PATTERNS) {
+      this.lexer.add(...pair);
     }
-
     for (pattern of IGNORED_PATTERNS) {
-      this.lexer.ignore(pattern)
+      this.lexer.ignore("", pattern);
     }
   }
 
   get_lexer() {
-    this.add_tokens()
-    return this.lexer.build()
+    this.add_tokens();
+    return this.lexer.build();
   }
 }
 
+var generator = new Generator();
+var lexer = generator.get_lexer();
 
+const source = "";
 
-lexer_generator = new LexerGenerator()
-lexer = lexer_generator.get_lexer()
+const result = lexer.lex(source);
 
+var item;
 
-function lex(source: string) {
-  return lexer.lex(source)
+while (true) {
+  item = result.next();
+  if (item === undefined) {
+    break;
+  }
+  console.log(item);
 }
-
-
-const source = '1 2 3'

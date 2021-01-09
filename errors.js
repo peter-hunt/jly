@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 class ParserGeneratorError extends Error {
   constructor(message) {
@@ -13,13 +13,13 @@ class LexingError extends Error {
   constructor(message, source_pos) {
     super(message);
     this.name = this.constructor.name;
-    this.source_pos = source_pos
+    this.source_pos = source_pos;
     Error.captureStackTrace(this, this.constructor);
   }
 
   getsourcepos() {
     // Returns the position in the source, at which this error occurred.
-    return this.source_pos
+    return this.source_pos;
   }
 }
 
@@ -28,13 +28,13 @@ class ParsingError extends Error {
   constructor(message, source_pos) {
     super(message);
     this.name = this.constructor.name;
-    this.source_pos = source_pos
+    this.source_pos = source_pos;
     Error.captureStackTrace(this, this.constructor);
   }
 
   getsourcepos() {
     // Returns the position in the source, at which this error occurred.
-    return this.source_pos
+    return this.source_pos;
   }
 }
 

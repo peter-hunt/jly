@@ -11,5 +11,8 @@
     "Lex-Yacc"
   ],
   "author": "Peter Hunt",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  }
 }

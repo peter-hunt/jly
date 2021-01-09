@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 class Token {
   /* Represents a syntactically relevant piece of text.
@@ -9,35 +9,34 @@ class Token {
                         this token was generated. */
 
   constructor(name, value, source_pos = null) {
-    this.name = name
-    this.value = value
-    this.source_pos = source_pos
+    this.name = name;
+    this.value = value;
+    this.source_pos = source_pos;
   }
 
   equalsTo(other) {
     if (other instanceof Token) {
-      return this.name == other.name && this.value == other.value
+      return this.name == other.name && this.value == other.value;
     }
   }
 
   gettokentype() {
     // Returns the type or name of the token.
-    return this.name
+    return this.name;
   }
 
   getsourcepos() {
     /* Returns a: class: `SourcePosition` instance,
        describing the position of this token's first character
        in the source. */
-    return this.source_pos
+    return this.source_pos;
   }
 
   getstr() {
     // Returns the string represented by this token.
-    return self.value
+    return self.value;
   }
 }
-
 
 class SourcePosition {
   /* Represents the position of a character in some source string.
@@ -48,8 +47,13 @@ class SourcePosition {
                     the identically named attributes. */
 
   constructor(idx, lineno, colno) {
-    this.idx = idx
-    this.lineno = lineno
-    this.colno = colno
+    this.idx = idx;
+    this.lineno = lineno;
+    this.colno = colno;
   }
 }
+
+module.exports = {
+  Token,
+  SourcePosition,
+};

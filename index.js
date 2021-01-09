@@ -1,9 +1,11 @@
-'use strict'
+"use strict";
 
-const errors = require("./errors")
-const lexergenerator = require("./lexergenerator")
-const token = require("./token")
+const ParsingError = require("./errors").ParsingError;
+const LexerGenerator = require("./lexergenerator").LexerGenerator;
+const Token = require("./token").Token;
 
-exports.ParsingError = errors.ParsingError
-exports.LexerGenerator = lexergenerator.LexerGenerator
-exports.Token = token.Token
+exports.module = {
+  ParsingError,
+  LexerGenerator,
+  Token,
+};
