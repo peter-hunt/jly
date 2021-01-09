@@ -1,0 +1,15 @@
+{
+  "name": "jly",
+  "version": "0.1.0",
+  "description": "Port of RPLY to JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "JavaScript",
+    "Lex-Yacc"
+  ],
+  "author": "Peter Hunt",
+  "license": "MIT"
+}
