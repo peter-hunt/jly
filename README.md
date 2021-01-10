@@ -12,10 +12,16 @@ $ npm i -g npm
 $ npm i .
 ```
 
+To test the project, use the following command:
+
+```bash
+$ npm test
+```
+
 # Usage
 
 In Node.js:
 
 ```js
-var jly = require("jly");
+var jly = require('jly')
 ```

@@ -1,25 +1,25 @@
-"use strict";
+'use strict'
 
-const Lexer = require("./lexer").Lexer;
+const Lexer = require('./lexer').Lexer
 
 class Rule {
   constructor(name, regex) {
-    this.name = name;
-    this.regex = regex;
+    this.name = name
+    this.regex = regex
   }
 
   matches(s, pos) {
-    var m = s.slice(pos).match(this.regex);
+    var m = s.slice(pos).match(this.regex)
     if (m !== null && m.index === 0) {
-      return new Match(pos, pos + m[0].length);
+      return new Match(pos, pos + m[0].length)
     }
   }
 }
 
 class Match {
   constructor(start, end) {
-    this.start = start;
-    this.end = end;
+    this.start = start
+    this.end = end
   }
 }
 
@@ -52,27 +52,27 @@ class LexerGenerator {
      null */
 
   constructor() {
-    this.rules = [];
-    this.ignore_rules = [];
+    this.rules = []
+    this.ignore_rules = []
   }
 
   add(name, pattern) {
     /* Adds a rule with the given `name` and `pattern`. In case of ambiguity,
        the first rule added wins. */
-    this.rules.push(new Rule(name, pattern));
+    this.rules.push(new Rule(name, pattern))
   }
 
   ignore(name, pattern) {
     /* Adds a rule whose matched value will be ignored. Ignored rules will be
         matched before regular ones. */
-    this.ignore_rules.push(new Rule("", pattern));
+    this.ignore_rules.push(new Rule('', pattern))
   }
 
   build() {
     /* Returns a lexer instance, which provides a `lex` method that must be
        called with a string and returns an iterator yielding
        :class:`~jly.Token` instances. */
-    return new Lexer(this.rules, this.ignore_rules);
+    return new Lexer(this.rules, this.ignore_rules)
   }
 }
 
@@ -80,4 +80,4 @@ module.exports = {
   Rule,
   Match,
   LexerGenerator,
-};
+}

@@ -13,6 +13,8 @@
   "author": "Peter Hunt",
   "license": "MIT",
   "dependencies": {
+    "appdirs": "^1.1.0",
+    "js-sha1": "^0.6.0",
     "requirejs": "^2.3.6"
   }
 }
